@@ -123,7 +123,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_maxFeatures(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_maxFeatures(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
 
@@ -132,6 +134,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_maxFeatures(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -145,7 +148,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_learningRate(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_learningRate(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
             set
@@ -153,6 +158,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_learningRate(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -166,7 +172,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_numInitializationFrames(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_numInitializationFrames(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
             set
@@ -174,6 +182,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_numInitializationFrames(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -187,7 +196,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_quantizationLevels(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_quantizationLevels(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
             set
@@ -195,6 +206,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_quantizationLevels(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -208,7 +220,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_backgroundPrior(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_backgroundPrior(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
             set
@@ -216,6 +230,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_backgroundPrior(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -229,7 +244,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_decisionThreshold(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_decisionThreshold(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
             set
@@ -237,6 +254,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_decisionThreshold(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -250,7 +268,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 unsafe
                 {
-                    return *NativeMethods.video_BackgroundSubtractorGMG_smoothingRadius(ptr);
+                    var ret = *NativeMethods.video_BackgroundSubtractorGMG_smoothingRadius(ptr);
+                    GC.KeepAlive(this);
+                    return ret;
                 }
             }
             set
@@ -258,6 +278,7 @@ namespace OpenCvSharp.CPlusPlus
                 unsafe
                 {
                     *NativeMethods.video_BackgroundSubtractorGMG_smoothingRadius(ptr) = value;
+                    GC.KeepAlive(this);
                 }
             }
         }
@@ -269,11 +290,14 @@ namespace OpenCvSharp.CPlusPlus
         {
             get
             {
-                return NativeMethods.video_BackgroundSubtractorGMG_updateBackgroundModel_get(ptr) != 0;
+                var ret = NativeMethods.video_BackgroundSubtractorGMG_updateBackgroundModel_get(ptr) != 0;
+                GC.KeepAlive(this);
+                return ret;
             }
             set
             {
                 NativeMethods.video_BackgroundSubtractorGMG_updateBackgroundModel_set(ptr, value ? 1 : 0);
+                GC.KeepAlive(this);
             }
         }
 
@@ -294,6 +318,8 @@ namespace OpenCvSharp.CPlusPlus
             image.ThrowIfDisposed();
             fgmask.ThrowIfNotReady();
             NativeMethods.video_BackgroundSubtractorGMG_operator(ptr, image.CvPtr, fgmask.CvPtr, learningRate);
+            GC.KeepAlive(this);
+            GC.KeepAlive(image);
             fgmask.Fix();
         }
 
@@ -307,6 +333,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual void Initialize(Size frameSize, double min, double max)
         {
             NativeMethods.video_BackgroundSubtractorGMG_initialize(ptr, frameSize, min, max);
+            GC.KeepAlive(this);
         }
 
         /// <summary>
@@ -315,6 +342,7 @@ namespace OpenCvSharp.CPlusPlus
         public new void Release()
         {
             NativeMethods.video_BackgroundSubtractorGMG_release(ptr);
+            GC.KeepAlive(this);
         }
 
         /// <summary>
@@ -323,7 +351,12 @@ namespace OpenCvSharp.CPlusPlus
         /// <returns></returns>
         public override IntPtr InfoPtr
         {
-            get { return NativeMethods.video_BackgroundSubtractorGMG_info(ptr); }
+            get
+            {
+                var ret = NativeMethods.video_BackgroundSubtractorGMG_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
+            }
         }
     }
 }

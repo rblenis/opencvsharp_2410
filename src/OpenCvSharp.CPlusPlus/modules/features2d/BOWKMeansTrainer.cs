@@ -74,6 +74,7 @@ namespace OpenCvSharp.CPlusPlus
             if (IsDisposed)
                 throw new ObjectDisposedException(GetType().Name);
             IntPtr p = NativeMethods.features2d_BOWKMeansTrainer_cluster1(ptr);
+            GC.KeepAlive(this);
             return new Mat(p);
         }
 
@@ -90,6 +91,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ObjectDisposedException(GetType().Name);
             descriptors.ThrowIfDisposed();
             IntPtr p = NativeMethods.features2d_BOWKMeansTrainer_cluster2(ptr, descriptors.CvPtr);
+            GC.KeepAlive(this);
             GC.KeepAlive(descriptors);
             return new Mat(p);
         }

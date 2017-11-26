@@ -92,7 +92,12 @@ namespace OpenCvSharp.CPlusPlus
         /// <returns></returns>
         public override IntPtr InfoPtr
         {
-            get { return NativeMethods.video_BackgroundSubtractor_info(ptr); }
+            get
+            {
+                var ret = NativeMethods.video_BackgroundSubtractor_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
+            }
         }
 
         /// <summary>
@@ -110,6 +115,8 @@ namespace OpenCvSharp.CPlusPlus
             image.ThrowIfDisposed();
             fgmask.ThrowIfNotReady();
             NativeMethods.video_BackgroundSubtractor_operator(ptr, image.CvPtr, fgmask.CvPtr, learningRate);
+            GC.KeepAlive(this);
+            GC.KeepAlive(image);
             fgmask.Fix();
         }
 
@@ -123,6 +130,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ArgumentNullException(nameof(backgroundImage));
             backgroundImage.ThrowIfNotReady();
             NativeMethods.video_BackgroundSubtractor_getBackgroundImage(ptr, backgroundImage.CvPtr);
+            GC.KeepAlive(this);
             backgroundImage.Fix();
         }
     }

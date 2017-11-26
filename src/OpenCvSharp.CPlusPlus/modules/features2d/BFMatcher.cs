@@ -112,7 +112,9 @@ namespace OpenCvSharp.CPlusPlus
         public override bool IsMaskSupported()
         {
             ThrowIfDisposed();
-            return NativeMethods.features2d_BFMatcher_isMaskSupported(ptr) != 0;
+            var ret = NativeMethods.features2d_BFMatcher_isMaskSupported(ptr) != 0;
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -123,7 +125,9 @@ namespace OpenCvSharp.CPlusPlus
         {
             get
             {
-                return NativeMethods.features2d_BFMatcher_info(ptr);
+                var ret = NativeMethods.features2d_BFMatcher_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
         #endregion

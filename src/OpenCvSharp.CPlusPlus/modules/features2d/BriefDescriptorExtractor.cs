@@ -114,7 +114,12 @@ namespace OpenCvSharp.CPlusPlus
         /// <returns></returns>
         public override IntPtr InfoPtr
         {
-            get { return NativeMethods.features2d_BriefDescriptorExtractor_info(ptr); }
+            get
+            {
+                var ret = NativeMethods.features2d_BriefDescriptorExtractor_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
+            }
         }
 
         /// <summary>
@@ -125,7 +130,9 @@ namespace OpenCvSharp.CPlusPlus
         {
             if (disposed)
                 throw new ObjectDisposedException("BriefDescriptorExtractor");
-            return NativeMethods.features2d_BriefDescriptorExtractor_descriptorSize(ptr);
+            var ret = NativeMethods.features2d_BriefDescriptorExtractor_descriptorSize(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
         /// <summary>
         /// 
@@ -135,7 +142,9 @@ namespace OpenCvSharp.CPlusPlus
         {
             if (disposed)
                 throw new ObjectDisposedException("BriefDescriptorExtractor");
-            return NativeMethods.features2d_BriefDescriptorExtractor_descriptorType(ptr);
+            var ret = NativeMethods.features2d_BriefDescriptorExtractor_descriptorType(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
     }
 }

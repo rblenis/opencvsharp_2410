@@ -118,7 +118,9 @@ namespace OpenCvSharp.CPlusPlus
         public int DescriptorSize()
         {
             ThrowIfDisposed();
-            return NativeMethods.features2d_BRISK_descriptorSize(ptr);
+            var ret = NativeMethods.features2d_BRISK_descriptorSize(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -128,7 +130,9 @@ namespace OpenCvSharp.CPlusPlus
         public int DescriptorType()
         {
             ThrowIfDisposed();
-            return NativeMethods.features2d_BRISK_descriptorType(ptr);
+            var ret = NativeMethods.features2d_BRISK_descriptorType(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -147,6 +151,9 @@ namespace OpenCvSharp.CPlusPlus
             using (VectorOfKeyPoint keyPointsVec = new VectorOfKeyPoint())
             {
                 NativeMethods.features2d_BRISK_run1(ptr, image.CvPtr, Cv2.ToPtr(mask), keyPointsVec.CvPtr);
+                GC.KeepAlive(this);
+                GC.KeepAlive(image);
+                GC.KeepAlive(mask);
                 return keyPointsVec.ToArray();
             }
         }
@@ -174,6 +181,9 @@ namespace OpenCvSharp.CPlusPlus
             {
                 NativeMethods.features2d_BRISK_run2(ptr, image.CvPtr, Cv2.ToPtr(mask), keyPointsVec.CvPtr,
                     descriptors.CvPtr, useProvidedKeypoints ? 1 : 0);
+                GC.KeepAlive(this);
+                GC.KeepAlive(image);
+                GC.KeepAlive(mask);
                 keyPoints = keyPointsVec.ToArray();
             }
             descriptors.Fix();
@@ -203,7 +213,9 @@ namespace OpenCvSharp.CPlusPlus
         {
             get
             {
-                return NativeMethods.features2d_BRISK_info(ptr);
+                retuvar ret = NativeMethods.features2d_BRISK_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
         #endregion

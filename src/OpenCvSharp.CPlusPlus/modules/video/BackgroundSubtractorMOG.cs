@@ -138,6 +138,8 @@ namespace OpenCvSharp.CPlusPlus
             image.ThrowIfDisposed();
             fgmask.ThrowIfNotReady();
             NativeMethods.video_BackgroundSubtractorMOG_operator(ptr, image.CvPtr, fgmask.CvPtr, learningRate);
+            GC.KeepAlive(this);
+            GC.KeepAlive(image);
             fgmask.Fix();
         }
     
@@ -149,15 +151,21 @@ namespace OpenCvSharp.CPlusPlus
         public virtual void Initialize(Size frameSize, int frameType)
         {
             NativeMethods.video_BackgroundSubtractorMOG_initialize(ptr, frameSize, frameType);
+            GC.KeepAlive(this);
         }
-        
+
         /// <summary>
         /// Pointer to algorithm information (cv::AlgorithmInfo*)
         /// </summary>
         /// <returns></returns>
         public override IntPtr InfoPtr
         {
-            get { return NativeMethods.video_BackgroundSubtractorMOG_info(ptr); }
+            get
+            {
+                var ret = NativeMethods.video_BackgroundSubtractorMOG_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
+            }
         }
     }
 }
