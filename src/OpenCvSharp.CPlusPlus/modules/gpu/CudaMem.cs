@@ -181,7 +181,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return NativeMethods.gpu_CudaMem_flags(ptr);
+                var ret = NativeMethods.gpu_CudaMem_flags(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -193,7 +195,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get 
             {
                 ThrowIfDisposed();
-                return NativeMethods.gpu_CudaMem_rows(ptr); 
+                var ret = NativeMethods.gpu_CudaMem_rows(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -205,7 +209,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return NativeMethods.gpu_CudaMem_cols(ptr);
+                var ret = NativeMethods.gpu_CudaMem_cols(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -217,7 +223,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return NativeMethods.gpu_CudaMem_rows(ptr);
+                var ret = NativeMethods.gpu_CudaMem_rows(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -229,7 +237,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return NativeMethods.gpu_CudaMem_cols(ptr);
+                var ret = NativeMethods.gpu_CudaMem_cols(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -241,7 +251,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return (IntPtr)NativeMethods.gpu_CudaMem_data(ptr);
+                var ret = (IntPtr)NativeMethods.gpu_CudaMem_data(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -254,7 +266,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return (IntPtr)NativeMethods.gpu_CudaMem_refcount(ptr);
+                var ret = (IntPtr)NativeMethods.gpu_CudaMem_refcount(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -266,7 +280,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return (IntPtr)NativeMethods.gpu_CudaMem_datastart(ptr);
+                var ret = (IntPtr)NativeMethods.gpu_CudaMem_datastart(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -278,7 +294,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return (IntPtr)NativeMethods.gpu_CudaMem_dataend(ptr);
+                var ret = (IntPtr)NativeMethods.gpu_CudaMem_dataend(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
 
@@ -290,7 +308,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             get
             {
                 ThrowIfDisposed();
-                return (CudaMemAllocType)NativeMethods.gpu_CudaMem_alloc_type(ptr);
+                var ret = (CudaMemAllocType)NativeMethods.gpu_CudaMem_alloc_type(ptr);
+                GC.KeepAlive(this);
+                return ret;
             }
         }
         #endregion
@@ -306,7 +326,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public bool IsContinuous()
         {
             ThrowIfDisposed();
-            return NativeMethods.gpu_CudaMem_isContinuous(ptr) != 0;
+            var ret = NativeMethods.gpu_CudaMem_isContinuous(ptr) != 0;
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -316,7 +338,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public int Channels()
         {
             ThrowIfDisposed();
-            return NativeMethods.gpu_CudaMem_channels(ptr);
+            var ret = NativeMethods.gpu_CudaMem_channels(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -326,7 +350,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public int Depth()
         {
             ThrowIfDisposed();
-            return NativeMethods.gpu_CudaMem_depth(ptr);
+            var ret = NativeMethods.gpu_CudaMem_depth(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -336,7 +362,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public long ElemSize()
         {
             ThrowIfDisposed();
-            return (long)NativeMethods.gpu_CudaMem_elemSize(ptr);
+            var ret = (long)NativeMethods.gpu_CudaMem_elemSize(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -346,7 +374,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public long ElemSize1()
         {
             ThrowIfDisposed();
-            return (long)NativeMethods.gpu_CudaMem_elemSize1(ptr);
+            var ret = (long)NativeMethods.gpu_CudaMem_elemSize1(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -356,16 +386,20 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public Size Size()
         {
             ThrowIfDisposed();
-            return NativeMethods.gpu_CudaMem_size(ptr);
+            var ret = NativeMethods.gpu_CudaMem_size(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
-        
+
         /// <summary>
         /// a distance between successive rows in bytes; includes the gap if any
         /// </summary>
         public long Step()
         {
             ThrowIfDisposed();
-            return (long)NativeMethods.gpu_CudaMem_step(ptr);
+            var ret = (long)NativeMethods.gpu_CudaMem_step(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -374,7 +408,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public long Step1()
         {
             ThrowIfDisposed();
-            return (long)NativeMethods.gpu_CudaMem_step1(ptr);
+            var ret = (long)NativeMethods.gpu_CudaMem_step1(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -384,7 +420,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public MatType Type()
         {
             ThrowIfDisposed();
-            return NativeMethods.gpu_CudaMem_type(ptr);
+            var ret = NativeMethods.gpu_CudaMem_type(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -394,7 +432,8 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         public bool Empty()
         {
             ThrowIfDisposed();
-            return NativeMethods.gpu_CudaMem_empty(ptr) != 0;
+            var ret = NativeMethods.gpu_CudaMem_empty(ptr) != 0;
+            GC.KeepAlive(this);
         }
 
         /// <summary>
@@ -405,6 +444,7 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         {
             ThrowIfDisposed();
             IntPtr ret = NativeMethods.gpu_CudaMem_clone(ptr);
+            GC.KeepAlive(this);
             return new CudaMem(ret);
         }
         object ICloneable.Clone()
@@ -422,6 +462,8 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             if (target == null)
                 throw new ArgumentNullException(nameof(target));
             NativeMethods.gpu_CudaMem_opAssign(target.CvPtr, ptr);
+            GC.KeepAlive(this);
+            GC.KeepAlive(target);
         }
 
         /// <summary>
@@ -437,8 +479,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         {
             ThrowIfDisposed();
             NativeMethods.gpu_CudaMem_create(ptr, rows, cols, type, (int)allocType);
+            GC.KeepAlive(this);
         }
-        
+
         /// <summary>
         /// returns matrix header with disabled reference counting for CudaMem data.
         /// </summary>
@@ -447,6 +490,7 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         {
             ThrowIfDisposed();
             IntPtr ret = NativeMethods.gpu_CudaMem_createMatHeader(ptr);
+            GC.KeepAlive(this);
             return new Mat(ret);
         }
 
@@ -458,6 +502,7 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         {
             ThrowIfDisposed();
             IntPtr ret = NativeMethods.gpu_CudaMem_createGpuMatHeader(ptr);
+            GC.KeepAlive(this);
             return new GpuMat(ret);
         }
 

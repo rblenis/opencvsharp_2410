@@ -88,13 +88,16 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             {
                 if (disposed)
                     throw new ObjectDisposedException(GetType().Name);
-                return NativeMethods.gpu_CascadeClassifier_GPU_findLargestObject_get(ptr) != 0;
+                var ret = NativeMethods.gpu_CascadeClassifier_GPU_findLargestObject_get(ptr) != 0;
+                GC.KeepAlive(this);
+                return ret;
             }
             set
             {
                 if (disposed)
                     throw new ObjectDisposedException(GetType().Name);
                 NativeMethods.gpu_CascadeClassifier_GPU_findLargestObject_set(ptr, value ? 0 : 1);
+                GC.KeepAlive(this);
             }
         }
 
@@ -107,13 +110,16 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             {
                 if (disposed)
                     throw new ObjectDisposedException(GetType().Name);
-                return NativeMethods.gpu_CascadeClassifier_GPU_visualizeInPlace_get(ptr) != 0;
+                var ret = NativeMethods.gpu_CascadeClassifier_GPU_visualizeInPlace_get(ptr) != 0;
+                GC.KeepAlive(this);
+                return ret;
             }
             set
             {
                 if (disposed)
                     throw new ObjectDisposedException(GetType().Name);
                 NativeMethods.gpu_CascadeClassifier_GPU_visualizeInPlace_set(ptr, value ? 0 : 1);
+                GC.KeepAlive(this);
             }
         }
 
@@ -129,6 +135,7 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             if (disposed)
                 throw new ObjectDisposedException(GetType().Name);
             NativeMethods.gpu_CascadeClassifier_GPU_release(ptr);
+            GC.KeepAlive(this);
         }
 
         /// <summary>
@@ -156,6 +163,7 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             int ret = NativeMethods.gpu_CascadeClassifier_GPU_detectMultiScale1(
                 ptr, image.CvPtr, objectsBuf.CvPtr, scaleFactor, minNeighbors, minSizeVal);
 
+            GC.KeepAlive(this);
             GC.KeepAlive(image);
             GC.KeepAlive(objectsBuf);
             return ret;
@@ -187,7 +195,8 @@ namespace OpenCvSharp.CPlusPlus.Gpu
             int ret = NativeMethods.gpu_CascadeClassifier_GPU_detectMultiScale2(
                 ptr, image.CvPtr, objectsBuf.CvPtr, maxObjectSize, minSizeVal, 
                 scaleFactor, minNeighbors);
-            
+
+            GC.KeepAlive(this);
             GC.KeepAlive(image);
             GC.KeepAlive(objectsBuf);
             return ret;
@@ -201,7 +210,9 @@ namespace OpenCvSharp.CPlusPlus.Gpu
         {
             if (disposed)
                 throw new ObjectDisposedException(GetType().Name);
-            return NativeMethods.gpu_CascadeClassifier_GPU_getClassifierSize(ptr);
+            var ret = NativeMethods.gpu_CascadeClassifier_GPU_getClassifierSize(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         #endregion

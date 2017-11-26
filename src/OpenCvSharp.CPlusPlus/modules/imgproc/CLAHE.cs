@@ -105,7 +105,12 @@ namespace OpenCvSharp.CPlusPlus
         /// <returns></returns>
         public override IntPtr InfoPtr
         {
-            get { return NativeMethods.imgproc_CLAHE_info(ptr); }
+            get
+            {
+                var ret = NativeMethods.imgproc_CLAHE_info(ptr);
+                GC.KeepAlive(this);
+                return ret;
+            }
         }
 
         /// <summary>
@@ -125,7 +130,7 @@ namespace OpenCvSharp.CPlusPlus
             dst.ThrowIfNotReady();
 
             NativeMethods.imgproc_CLAHE_apply(ptr, src.CvPtr, dst.CvPtr);
-
+            GC.KeepAlive(this);
             dst.Fix();
             GC.KeepAlive(src);
         }
@@ -140,6 +145,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ObjectDisposedException(GetType().Name);
 
             NativeMethods.imgproc_CLAHE_setClipLimit(ptr, clipLimit);
+            GC.KeepAlive(this);
         }
 
         /// <summary>
@@ -151,9 +157,11 @@ namespace OpenCvSharp.CPlusPlus
             if (disposed)
                 throw new ObjectDisposedException(GetType().Name);
 
-            return NativeMethods.imgproc_CLAHE_getClipLimit(ptr);
+            var ret = NativeMethods.imgproc_CLAHE_getClipLimit(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -173,6 +181,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ObjectDisposedException(GetType().Name);
 
             NativeMethods.imgproc_CLAHE_setTilesGridSize(ptr, tileGridSize);
+            GC.KeepAlive(this);
         }
 
         /// <summary>
@@ -184,7 +193,9 @@ namespace OpenCvSharp.CPlusPlus
             if (disposed)
                 throw new ObjectDisposedException(GetType().Name);
 
-            return NativeMethods.imgproc_CLAHE_getTilesGridSize(ptr);
+            var ret = NativeMethods.imgproc_CLAHE_getTilesGridSize(ptr);
+            GC.KeepAlive(this);
+            return ret;
         }
 
         /// <summary>
@@ -206,6 +217,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ObjectDisposedException(GetType().Name);
 
             NativeMethods.imgproc_CLAHE_collectGarbage(ptr);
+            GC.KeepAlive(this);
         }
     }
 }
