@@ -75,6 +75,7 @@ namespace OpenCvSharp.CPlusPlus
             int value = 0;
             NativeMethods.core_AlgorithmInfo_getInt(
                 info, ptr, name, (int)AlgorithmParamType.Int, ref value);
+            GC.KeepAlive(this);
             return value;
         }
         /// <summary>
@@ -92,6 +93,7 @@ namespace OpenCvSharp.CPlusPlus
             double value = 0;
             NativeMethods.core_AlgorithmInfo_getDouble(
                 info, ptr, name, (int)AlgorithmParamType.Real, ref value);
+            GC.KeepAlive(this);
             return value;
         }
 
@@ -110,6 +112,7 @@ namespace OpenCvSharp.CPlusPlus
             int valueInt = 0;
             NativeMethods.core_AlgorithmInfo_getBool(
                 info, ptr, name, (int)AlgorithmParamType.Boolean, ref valueInt);
+            GC.KeepAlive(this);
             return valueInt != 0;
         }
         /// <summary>
@@ -127,6 +130,7 @@ namespace OpenCvSharp.CPlusPlus
             StringBuilder buf = new StringBuilder(1 << 16);
             NativeMethods.core_AlgorithmInfo_getString(
                 info, ptr, name, (int)AlgorithmParamType.String, buf, buf.Capacity);
+            GC.KeepAlive(this);
             return buf.ToString();
         }
         /// <summary>
@@ -144,6 +148,7 @@ namespace OpenCvSharp.CPlusPlus
             Mat value = new Mat();
             NativeMethods.core_AlgorithmInfo_getMat(
                 info, ptr, name, (int)AlgorithmParamType.Mat, value.CvPtr);
+            GC.KeepAlive(this);
             return value;
         }
 
@@ -185,6 +190,7 @@ namespace OpenCvSharp.CPlusPlus
             IntPtr info = InfoPtr;
             NativeMethods.core_AlgorithmInfo_setInt(
                 info, ptr, name, (int)AlgorithmParamType.Int, value, 0);
+            GC.KeepAlive(this);
         }
         /// <summary>
         /// Sets the algorithm parameter
@@ -198,6 +204,7 @@ namespace OpenCvSharp.CPlusPlus
             IntPtr info = InfoPtr;
             NativeMethods.core_AlgorithmInfo_setDouble(
                 info, ptr, name, (int)AlgorithmParamType.Real, value, 0);
+            GC.KeepAlive(this);
         }
         /// <summary>
         /// Sets the algorithm parameter
@@ -212,6 +219,7 @@ namespace OpenCvSharp.CPlusPlus
             int valueInt = value ? 1 : 0;
             NativeMethods.core_AlgorithmInfo_setBool(
                 info, ptr, name, (int)AlgorithmParamType.Boolean, valueInt, 0);
+            GC.KeepAlive(this);
         }
         /// <summary>
         /// Sets the algorithm parameter
@@ -225,6 +233,7 @@ namespace OpenCvSharp.CPlusPlus
             IntPtr info = InfoPtr;
             NativeMethods.core_AlgorithmInfo_setString(
                 info, ptr, name, (int)AlgorithmParamType.String, value, 0);
+            GC.KeepAlive(this);
         }
         /// <summary>
         /// Sets the algorithm parameter
@@ -242,6 +251,8 @@ namespace OpenCvSharp.CPlusPlus
             IntPtr info = InfoPtr;
             NativeMethods.core_AlgorithmInfo_setMat(
                 info, ptr, name, (int)AlgorithmParamType.Mat, value.CvPtr, 0);
+            GC.KeepAlive(this);
+            GC.KeepAlive(value);
         }
 
         /// <summary>

@@ -41,6 +41,7 @@ namespace OpenCvSharp.CPlusPlus
             {
                 StringBuilder buf = new StringBuilder(1024);
                 NativeMethods.core_AlgorithmInfo_name(ptr, buf, buf.Capacity);
+                GC.KeepAlive(this);
                 return buf.ToString();
             }
         }
@@ -54,6 +55,7 @@ namespace OpenCvSharp.CPlusPlus
         {
             StringBuilder buf = new StringBuilder(4096);
             NativeMethods.core_AlgorithmInfo_paramHelp(ptr, name, buf, buf.Capacity);
+            GC.KeepAlive(this);
             return buf.ToString();
         }
 
@@ -66,6 +68,7 @@ namespace OpenCvSharp.CPlusPlus
             using (var namesVec = new VectorOfString())
             {
                 NativeMethods.core_AlgorithmInfo_getParams(ptr, namesVec.CvPtr);
+                GC.KeepAlive(this);
                 return namesVec.ToArray();
             }
         }
@@ -77,7 +80,9 @@ namespace OpenCvSharp.CPlusPlus
         /// <returns></returns>
         public AlgorithmParamType ParamType(string name)
         {
-            return (AlgorithmParamType)NativeMethods.core_AlgorithmInfo_paramType(ptr, name);
+            var ret =  (AlgorithmParamType)NativeMethods.core_AlgorithmInfo_paramType(ptr, name);
+            GC.KeepAlive(this);
+            return ret;
         }
     }
 }
